@@ -56,7 +56,7 @@ const dartThrow = fScore => pipe([
   logs('Lanzamiento:'), 
   fScore, 
   logs('Puntos:'), 
-  hasWin
+  hasWon
 ])
 
 const game = (players, turn=0) => {
@@ -67,13 +67,7 @@ const game = (players, turn=0) => {
 const init_state = name => Object.freeze({ name, score: player(name) });
 
 const init_game = (...players) => {
-  /*let state = []
-  players.forEach((name) => state = [
-    ...state, 
-    { name, score: init_score(name) }
-  ])
-  return state;*/
   return Object.freeze(players.map(init_state));
 }
 
-const hasWin = score => score === 0;
+const hasWon = score => score === 0;
