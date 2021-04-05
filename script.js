@@ -6,7 +6,7 @@ const identity = x => x;
 // K Combinator
 const k = x => y => x;
 
-const init_score = k(501);
+const initScore = k(501);
 
 // Pipeline que toma funciones con parámetro el retorno de la función anterior 
 const pipe = functions => data => {
@@ -39,7 +39,7 @@ const logs = msg => x => {
 }
 
 const player = name => {
-  let score = init_score(name);
+  let score = initScore(name);
   return function(move) {
     const operation = compose(Math.abs, calc(move));
     score = operation(score);
@@ -59,15 +59,15 @@ const dartThrow = fScore => pipe([
   hasWon
 ])
 
-const game = (players, turn=0) => {
+const initGame = (players, turn=0) => {
   return dartThrow(players[turn].score)(players[turn].name) ? 
     console.log(`ganó ${players[turn].name}`): game(players, (turn + 1) % players.length)
 }
 
-const init_state = name => Object.freeze({ name, score: player(name) });
+const initState = name => Object.freeze({ name, score: player(name) });
 
-const init_game = (...players) => {
-  return Object.freeze(players.map(init_state));
+const setup = (...players) => {
+  return Object.freeze(players.map(initState));
 }
 
 const hasWon = score => score === 0;
