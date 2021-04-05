@@ -52,6 +52,6 @@ startGame.addEventListener('click', (e) => {
   addPlayer.remove();
   startGame.remove();
 
-  const dartGame = init_game(...playersNames);
-  game(dartGame);
+  const dartGame = setup(...playersNames);
+  initGame(dartGame);
 })
