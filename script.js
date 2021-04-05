@@ -77,23 +77,3 @@ const init_game = (...players) => {
 }
 
 const hasWin = score => score === 0;
-
-/* const setup = n => {
-  let players = [];
-  let turn = 0;
-  [...(new Array(n))].forEach(sb => {
-    const name = window.prompt("Ingresa tu nombre: ")
-    players = [...players, name]
-  })
-  return players;
-}
-
-
-const playerThrow = player => points => {
-  points
-    .map(x => Array.isArray(x) ? x : (x==='DP') ? [1, 25] : [1, 50])
-    .reduce((x, y) => x + y[0]*y[1],0)
-}
- */
-
-const juego = init_game('pipe', 'juanpa', 'vicho');
