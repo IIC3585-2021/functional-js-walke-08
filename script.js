@@ -59,7 +59,7 @@ const dartThrow = fScore => pipe([
   hasWon
 ])
 
-const initGame = (players, turn=0) => {
+const game = (players, turn=0) => {
   return dartThrow(players[turn].score)(players[turn].name) ? 
     console.log(`ganó ${players[turn].name}`): game(players, (turn + 1) % players.length)
 }
