@@ -15,21 +15,21 @@ const pipe = functions => data => {
 
 const map = f => x => x.map(f) 
 
-const aleatorio = () => ([
+const random = () => ([
   Math.floor(Math.random()*3) + 1, 
   Math.floor(Math.random()*21)
 ]);
 
 const generateThrow = () => {
   const sThrow = Math.random();
-  return sThrow <= 0.3 ? sThrow <= 0.1 ? 'DB' : 'SB' : aleatorio();
+  return sThrow <= 0.3 ? sThrow <= 0.1 ? 'DB' : 'SB' : random();
 }
 
 const scoreThrow = x => Array.isArray(x) ? x[0]*x[1] : x === 'DB' ? 50 : 25;
 
-const restarPuntaje = (x, y) => x - scoreThrow(y);
+const substractScore = (x, y) => x - scoreThrow(y);
 
-const calc = move => move ? score => move.reduce(restarPuntaje, score) : identity;
+const calc = move => move ? score => move.reduce(substractScore, score) : identity;
 
 const compose = (f, g) => x => f(g(x))
 
